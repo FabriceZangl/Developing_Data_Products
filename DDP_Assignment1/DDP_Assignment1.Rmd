@@ -1,0 +1,44 @@
+---
+title: "Auchan Retailer Stores in France"
+author: "Fabrice Zangl"
+date: "November 4, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Introduction
+
+I hope you will enjoy the map that I'm sharing here on the next slide.
+
+It includes:
+
+- All stores from the French retailer *Auchan* in France.
+- Markers include the name and address of the store.
+- The markers should be the logo of the retailer.
+- The markers should be clustered in circles.
+
+## Auchan Stores in France
+
+**This map was created on November 4th 2016**
+
+```{r THE_MAP, echo = F}
+library(leaflet)
+AuchanIcon <- makeIcon(
+     iconURL <- "http://vectorlogofree.com/wp-content/uploads/2013/07/auchan-eps-vector-logo.png",
+     iconWidth = 31*215/230,
+     iconHeight = 31,
+     iconAnchorX = 31*215/230/2,
+     iconAnchorY = 16
+     )
+
+df_stores <- read.csv("Auchan_stores.csv", header = T, sep = ",")
+
+StoresMap <- 
+     leaflet() %>%
+     addTiles() %>%
+     addMarkers(lat = df_stores$Store.Latitude, lng = df_stores$Store.Longitude, popup = df_stores$full.address, icon = AuchanIcon, clusterOptions = markerClusterOptions())
+StoresMap
+```
