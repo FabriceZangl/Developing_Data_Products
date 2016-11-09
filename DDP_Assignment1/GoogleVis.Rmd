@@ -1,0 +1,32 @@
+---
+title: "Google Vis charts"
+author: "Fabrice Zangl"
+date: "November 5, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Slide with R Output
+
+```{r Google_Vis, echo = TRUE}
+if(!require(googleVis)) {install.packages("googleVis"); require(googleVis)}
+suppressPackageStartupMessages(library(googleVis))
+
+Le_Chart <- gvisMotionChart(Fruits,"Fruit", "Year", options = list(width = 600, height = 400))
+plot(Le_Chart)
+#print(Le_Chart,"chart.html")
+```
+
+## Slide with 2 charts
+
+```{r Google_Vis, echo = TRUE}
+Le_Chart <- gvisMotionChart(Fruits,"Fruit", "Year", options = list(width = 300, height = 400))
+plot(Le_Chart)
+La_Carte <- gvisGeoChart(Exports, locationvar = "Country", colorvar = "Profit", options = list(width = 300, height = 400, region = "150"))
+Le_Merge <- gvisMerge(Le_Chart, La_Carte, horizontal = T)
+plot(Le_Merge)
+#print(Le_Chart,"chart.html")
+```

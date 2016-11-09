@@ -1,0 +1,38 @@
+---
+title: "Plotly charts"
+author: "Fabrice Zangl"
+date: "November 5, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Simple plot, but transfering from ggplot to plotly
+
+```{r plotly, echo = TRUE}
+if(!require(plotly)) {install.packages("plotly"); require(plotly)}
+if(!require(ggplot2)) { install.packages("ggplot2"); require(ggplot2)}
+suppressPackageStartupMessages(library(plotly))
+### getting the data
+url <- "https://d396qusza40orc.cloudfront.net/exdata%2Fdata%2FNEI_data.zip"
+download.file(url, "course4_assignment2.zip")
+unzip("course4_assignment2.zip")
+NEI <- readRDS("summarySCC_PM25.rds")
+SCC <- readRDS("Source_Classification_Code.rds")
+
+### Generating a ggplot
+df <- aggregate(Emissions ~ year + type, subset(NEI, fips == "24510"), sum, na.action=NULL)
+g <- ggplot(df, aes(year, Emissions)) 
+g <- g + facet_grid(. ~ type)
+g <- g + geom_point(aes(colour=type)) 
+g <- g + geom_line(aes(colour=type)) 
+g <- g + geom_line(stat="hline",yintercept="min", lwd = 1, linetype = "dotted", colour="orange")
+g <- g + theme_bw() 
+g <- g + theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0)) 
+g <- g + labs(title = "PM2.5 annual trends in Baltimore by type")
+g <- g + labs(x = "Years")
+(gg <- ggplotly(g))
+```
+

@@ -1,0 +1,26 @@
+---
+title: "Plotly charts"
+author: "Fabrice Zangl"
+date: "November 5, 2016"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## Slide with R Output
+
+```{r plotly, echo = TRUE}
+if(!require(plotly)) {install.packages("plotly"); require(plotly)}
+suppressPackageStartupMessages(library(plotly))
+
+# to host plots, visit htts://plot.ly/
+data(mtcars)
+plot_ly(mtcars, x = mtcars$wt, y = mtcars$mpg, mode = "markers")
+data(trees)
+plot_ly(trees, x = trees$Girth, y = trees$Volume, mode = "markers", color = trees$Height)
+# you can also add a variable as the optional input for the size of the marker.
+# if your colour variable is categorical, plotly will recognize it automatically.
+# Plotly also enables 3D scatterplots. You just need to specify z dimension and specify "type = scatter3d"
+```

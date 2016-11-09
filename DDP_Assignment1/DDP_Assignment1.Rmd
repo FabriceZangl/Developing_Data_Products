@@ -20,6 +20,8 @@ It includes:
 - The markers should be the logo of the retailer.
 - The markers should be clustered in circles.
 
+The last slide includes the code that was used.
+
 ## Auchan Stores in France
 
 **This map was created on November 4th 2016**
@@ -35,6 +37,28 @@ AuchanIcon <- makeIcon(
      )
 
 df_stores <- read.csv("Auchan_stores.csv", header = T, sep = ",")
+
+StoresMap <- 
+     leaflet() %>%
+     addTiles() %>%
+     addMarkers(lat = df_stores$Store.Latitude, lng = df_stores$Store.Longitude, popup = df_stores$full.address, icon = AuchanIcon, clusterOptions = markerClusterOptions())
+StoresMap
+```
+
+## The code I used
+
+
+```{r THE_CODE, echo = TRUE, eval = FALSE}
+library(leaflet)
+AuchanIcon <- makeIcon(
+     iconURL <- "http://vectorlogofree.com/wp-content/uploads/2013/07/auchan-eps-vector-logo.png",
+     iconWidth = 31*215/230,
+     iconHeight = 31,
+     iconAnchorX = 31*215/230/2,
+     iconAnchorY = 16
+     )
+
+df_stores <- read.csv("https://github.com/FabriceZangl/Developing_Data_Products/blob/master/DDP_Assignment1/Auchan_stores.csv", header = T, sep = ",")
 
 StoresMap <- 
      leaflet() %>%
