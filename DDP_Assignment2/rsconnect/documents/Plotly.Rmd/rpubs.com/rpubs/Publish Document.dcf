@@ -1,0 +1,8 @@
+name: Publish Document
+title:
+account: rpubs
+server: rpubs.com
+appId: https://api.rpubs.com/api/v1/document/226287/663ba3f437e644cea8a5059af608a103
+bundleId: https://api.rpubs.com/api/v1/document/226287/663ba3f437e644cea8a5059af608a103
+url: http://rpubs.com/fabricezangl/226287
+when: 1478902766.64311
