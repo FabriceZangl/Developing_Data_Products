@@ -1,6 +1,6 @@
 library(shiny)
 shinyUI(fluidPage(
-  titlePanel("k-means clustering on mtcars data set"),
+  titlePanel("O'k-meaner"),
   sidebarLayout(
     sidebarPanel(
       h3("Select features and number of clusters"),

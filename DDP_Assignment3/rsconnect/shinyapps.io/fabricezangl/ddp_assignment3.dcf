@@ -3,9 +3,9 @@ title:
 account: fabricezangl
 server: shinyapps.io
 appId: 137603
-bundleId: 619564
+bundleId: 619877
 url: https://fabricezangl.shinyapps.io/ddp_assignment3/
-when: 1479591137.43749
+when: 1479647034.26337
 asMultiple: FALSE
 asStatic: FALSE
 ignoredFiles: .RData|DDP_Assignment3_documentation-rpubs.html|DDP_Assignment3_documentation.md|DDP_Assignment3_documentation.Rpres|New Text Document.html|ok_smiley.png|DDP_Assignment3_documentation-figure/unnamed-chunk-1-1.png
